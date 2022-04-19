@@ -33,7 +33,7 @@ const actions = {
   login({ commit, dispatch }: ActionContext<userState, userState>, params: any) {
     return new Promise((resolve, reject) => {
       loginApi(params)
-      .then(res => {
+        .then(res => {
         commit('tokenChange', res.data.token)
         dispatch('getInfo', { token: res.data.token })
         .then(infoRes => {

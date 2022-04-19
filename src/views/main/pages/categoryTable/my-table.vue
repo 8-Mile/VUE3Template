@@ -92,13 +92,14 @@ export default defineComponent({
         page.index = 1
       }
       let params = {
-        category: activeCategory.value.id,
-        page: page.index,
+        // category: activeCategory.value.id,
+        pageNum: page.index,
         pageSize: page.size,
-        ...query
+        // ...query
       }
       getData(params)
-      .then(res => {
+      .then(res => { 
+        // 484.7 469.77 471.66
         let data = res.data.list
         if (Array.isArray(data)) {
           data.forEach(d => {
@@ -108,7 +109,7 @@ export default defineComponent({
             radio ? d.radioName = radio.label : d.radio
           })
         }
-        tableData.value = res.data.list
+        // tableData.value = res.data.list
         page.total = Number(res.data.pager.total)
       })
       .catch(error => {

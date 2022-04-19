@@ -86,18 +86,18 @@ export default defineComponent({
     }
     // 获取表格数据
     // params <init> Boolean ，默认为false，用于判断是否需要初始化分页
-    const getTableData = (init: boolean) => {
+      const getTableData = async () => {
       loading.value = true
-      if (init) {
-        page.index = 1
-      }
+      // if (init) {
+      //   page.index = 1
+      // }
       let params = {
         category: activeCategory.value.id,
         page: page.index,
         pageSize: page.size,
         ...query
       }
-      getData(params)
+     await getData(params)
       .then(res => {
         let data = res.data.list
         if (Array.isArray(data)) {

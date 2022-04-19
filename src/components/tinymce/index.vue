@@ -96,7 +96,6 @@ export default {
       // dynamic load tinymce from cdn
       load(tinymceCDN, (err) => {
         if (err) {
-          console.log(err.message)
           return
         }
         this.initTinymce()

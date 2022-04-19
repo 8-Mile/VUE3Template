@@ -1,12 +1,4 @@
-/*
- * @Author: luoxi
- * @Date: 2022-01-25 09:51:12
- * @LastEditors: luoxi
- * @LastEditTime: 2022-01-25 12:40:52
- * @FilePath: \vue-admin-box\vite.config.ts
- * @Description: 
- */
-import { ConfigEnv, UserConfigExport } from 'vite'
+import { ConfigEnv, UserConfigExport, defineConfig } from "vite";
 import vue from '@vitejs/plugin-vue'
 import { viteMockServe } from 'vite-plugin-mock'
 import { resolve } from 'path'
@@ -19,10 +11,9 @@ const alias: Record<string, string> = {
   '@': pathResolve("src")
 }
 
-/** 
- * @description-en vite document address
- * @description-cn vite官网
- * https://vitejs.cn/config/ */
+// export default defineConfig({
+  
+// })
 export default ({ command }: ConfigEnv): UserConfigExport => {
   const prodMock = true;
   return {
@@ -39,13 +30,16 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       },
     },
     build: {
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'echarts': ['echarts']
-          }
-        }
-      }
+      target: 'modules',
+      outDir: 'dist',
+      assetsDir:'assets',
+      // ``rollupOptions: {
+      //   output: {
+      //     manualChunks: {
+      //       'echarts': ['echarts']
+      //     }
+      //   }
+      // }``
     },
     plugins: [
       vue(),
